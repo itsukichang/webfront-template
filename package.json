@@ -1,0 +1,26 @@
+{
+  "name": "itsukichang-settings",
+  "version": "0.0.1",
+  "description": "development of web frontend template by itsukichang",
+  "main": "index.js",
+  "author": "itsukichang",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "browserify": "^14.3.0",
+    "pug": "^2.0.0-beta.12",
+    "pug-cli": "^1.0.0-alpha6",
+    "stylus": "^0.54.5",
+    "tsify": "^3.0.1",
+    "typescript": "^2.3.2",
+    "watchify": "^3.9.0"
+  },
+  "scripts": {
+    "watch-pug": "pug src --out public -w",
+    "watch-stylus": "stylus src/styles/main.styl -w -o public/assets/main.css",
+    "build-ts": "browserify ./src/scripts/main.ts -p [tsify] > ./public/assets/main.js",
+    "watch-ts": "watchify ./src/scripts/main.ts -p [tsify] -v --debug -o ./public/assets/main.js",
+    "start-serve": "browser-sync start --server public --files public/**/*",
+    "watch": "npm run watch-pug & npm run watch-stylus & npm run watch-ts & npm run start-serve"
+  }
+}
